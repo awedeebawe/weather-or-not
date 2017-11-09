@@ -148,7 +148,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Open the source folder that contains `demo.csv`...\ncd $PROJECT_DIR/$PRODUCT_NAME\n# ... and overwrite it 🤓\n$PROJECT_DIR/csv-generator/csv-gen\n";
+			shellScript = "# Variable to store the path\nTARGET_DIR=$PROJECT_DIR/$PRODUCT_NAME\n\n# Clean-up\nrm -f $TARGET_DIR/csv-gen\n\n# Build the `csv-generator` swift package\ncd $PROJECT_DIR/csv-generator\nswift build -c release\n\n# Symlink the binary ...\nln ./.build/release/csv-generator $TARGET_DIR/csv-gen\n# ... and use it in the product folder 🤓\ncd $TARGET_DIR\n./csv-gen\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

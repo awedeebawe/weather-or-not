@@ -10,8 +10,6 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var label: UILabel!
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -21,9 +19,9 @@ class ViewController: UIViewController {
             let csvpath = URL(fileURLWithPath: csvfile)
             let csvdata = try Data(contentsOf: csvpath)
             
-            let csvstring = String(data: csvdata, encoding: .utf8)
+            let csvstring = String(data: csvdata, encoding: .utf8) ?? ""
             
-            label.text = csvstring
+            print(csvstring)
         } catch {
             print("awedeebawe")
         }
