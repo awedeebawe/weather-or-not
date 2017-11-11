@@ -63,10 +63,14 @@
                                 <constraint firstAttribute="bottom" secondItem="Y5U-Mf-poN" secondAttribute="bottom" id="djJ-hO-bms"/>
                             </constraints>
                         </view>
-                        <barButtonItem key="rightBarButtonItem" title="Show map" id="gLP-Tk-rVD"/>
+                        <barButtonItem key="rightBarButtonItem" title="Show map" id="gLP-Tk-rVD">
+                            <connections>
+                                <segue destination="6cB-0d-FaQ" kind="presentation" id="4oz-ft-zi3"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="mapBarButton" destination="gLP-Tk-rVD" id="vRq-c9-zz1"/>
+                        <outlet property="mapBarButton" destination="gLP-Tk-rVD" id="bWl-M5-0Sk"/>
                         <outlet property="titleLabel" destination="Y5U-Mf-poN" id="G0L-vB-eyP"/>
                         <outlet property="titleLoader" destination="tLu-bT-tdg" id="o37-Ir-kC2"/>
                     </connections>
@@ -74,6 +78,43 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="418" y="-101"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="3NJ-tI-eyK">
+            <objects>
+                <viewController storyboardIdentifier="mapScreen" id="ynH-3m-01M" customClass="MapViewController" customModule="Weather_or_not" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YYe-j8-KSk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsBuildings="NO" showsCompass="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ko9-Bm-dTk">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <gestureRecognizers/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ko9-Bm-dTk" firstAttribute="bottom" secondItem="VU2-GX-e7d" secondAttribute="bottom" id="EJe-bV-2qB"/>
+                            <constraint firstItem="ko9-Bm-dTk" firstAttribute="trailing" secondItem="VU2-GX-e7d" secondAttribute="trailing" id="hWs-DH-YaG"/>
+                            <constraint firstItem="ko9-Bm-dTk" firstAttribute="top" secondItem="VU2-GX-e7d" secondAttribute="top" id="hiS-Sq-nrb"/>
+                            <constraint firstItem="ko9-Bm-dTk" firstAttribute="leading" secondItem="VU2-GX-e7d" secondAttribute="leading" id="yun-4r-FKq"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="VU2-GX-e7d"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="p3l-Ya-NDL">
+                        <barButtonItem key="rightBarButtonItem" title="Hide map" springLoaded="YES" id="cGv-ED-9Dc">
+                            <connections>
+                                <action selector="hideMap" destination="ynH-3m-01M" id="aWB-CY-PoJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="ko9-Bm-dTk" id="Ovx-Zd-Rhm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j9t-wx-PBz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2034" y="-101"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ux0-c2-jaE">
@@ -92,6 +133,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3ZB-Xp-QnP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-310" y="-101"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="twh-CR-8jJ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6cB-0d-FaQ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3b7-sN-NPw">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ynH-3m-01M" kind="relationship" relationship="rootViewController" id="g7T-ai-X3s"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jrz-f8-bHq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1262" y="-101"/>
         </scene>
     </scenes>
 </document>

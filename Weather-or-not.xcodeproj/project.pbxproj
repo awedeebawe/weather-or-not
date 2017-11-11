@@ -19,6 +19,7 @@
 		C70B192A1FB5AC0E001FDA8C /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70B19291FB5AC0E001FDA8C /* ViewModel.swift */; };
 		C70B192E1FB5AD47001FDA8C /* RemoteClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70B192D1FB5AD47001FDA8C /* RemoteClient.swift */; };
 		C793212D1FB5BCD60081CCA1 /* LocalClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C793212C1FB5BCD60081CCA1 /* LocalClient.swift */; };
+		C793212F1FB6FC9D0081CCA1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C793212E1FB6FC9D0081CCA1 /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		C70B19291FB5AC0E001FDA8C /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		C70B192D1FB5AD47001FDA8C /* RemoteClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteClient.swift; sourceTree = "<group>"; };
 		C793212C1FB5BCD60081CCA1 /* LocalClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalClient.swift; sourceTree = "<group>"; };
+		C793212E1FB6FC9D0081CCA1 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 			children = (
 				C51A69A81FB3B77D00375F99 /* ViewController.swift */,
 				C51A69AA1FB3B77D00375F99 /* Main.storyboard */,
+				C793212E1FB6FC9D0081CCA1 /* MapViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 				C51A69A91FB3B77D00375F99 /* ViewController.swift in Sources */,
 				C70B19261FB5AACC001FDA8C /* City.swift in Sources */,
 				C70B19221FB5A7AF001FDA8C /* Forecast.swift in Sources */,
+				C793212F1FB6FC9D0081CCA1 /* MapViewController.swift in Sources */,
 				C70B19241FB5AA91001FDA8C /* ForecastData.swift in Sources */,
 				C51A69A71FB3B77D00375F99 /* AppDelegate.swift in Sources */,
 				C793212D1FB5BCD60081CCA1 /* LocalClient.swift in Sources */,
@@ -353,7 +357,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = MQ567TFJJQ;
 				INFOPLIST_FILE = "Weather-or-not/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -371,7 +375,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = MQ567TFJJQ;
 				INFOPLIST_FILE = "Weather-or-not/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

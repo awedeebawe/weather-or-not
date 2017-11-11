@@ -7,8 +7,11 @@
 //
 
 import Foundation
+import CoreLocation
 
 class ViewModel {
+    
+    public var currentLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 53.241924, longitude: -1.117965)
     
     public var forecastData: ForecastData?
     
@@ -22,7 +25,7 @@ class ViewModel {
     func updateRemote() {
         updateStarted?()
         
-        remoteClient.fetchForecast(forLat: 53.241924, andLon: -1.117965) { data in
+        remoteClient.fetchForecast(forLat: currentLocation.latitude, andLon: currentLocation.longitude) { data in
             guard let forecastData = data else {
                 print("Failed to fetch")
                 self.updateFailed?()

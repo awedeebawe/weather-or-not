@@ -8,7 +8,9 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+private let mapScreen = "mapScreen"
+
+class ViewController: UIViewController, MapDelegate {
     
     @IBOutlet weak var titleLoader: UIActivityIndicatorView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -31,6 +33,7 @@ class ViewController: UIViewController {
         viewModel.updateRemote()
     }
     
+    // MARK: ViewModel methods
     func didStart() {
         updateTitle(nil)
     }
@@ -46,22 +49,6 @@ class ViewController: UIViewController {
     func didFail() {
         updateTitle("--")
     }
-
-    @IBAction func changeDataSource(_ sender: UISegmentedControl) {
-        sender.selectedSegmentIndex == 0 ? useRemote() : useLocal()
-    }
-    
-    fileprivate func useRemote() {
-        viewModel.updateRemote()
-        
-        mapBarButton.isEnabled = true
-    }
-    
-    fileprivate func useLocal() {
-        viewModel.updateLocal()
-        
-        mapBarButton.isEnabled = false
-    }
     
     fileprivate func updateTitle(_ title: String?) {
         DispatchQueue.main.async {
@@ -76,6 +63,38 @@ class ViewController: UIViewController {
             self.titleLabel.text = title
             self.titleLoader.isHidden = true
         }
+    }
+    
+    fileprivate func useRemote() {
+        viewModel.updateRemote()
+        
+        mapBarButton.isEnabled = true
+    }
+    
+    fileprivate func useLocal() {
+        viewModel.updateLocal()
+        
+        mapBarButton.isEnabled = false
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let mapNavigationController = segue.destination as? UINavigationController,
+            let mapViewController = mapNavigationController.viewControllers.first as? MapViewController else {
+            return
+        }
+        
+        mapViewController.delegate = self
+        mapViewController.viewModel = self.viewModel
+    }
+    
+    // MARK: MapDelegate method
+    func hideMap(viewController vc: MapViewController) {
+        vc.dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: IBActions
+    @IBAction func changeDataSource(_ sender: UISegmentedControl) {
+        sender.selectedSegmentIndex == 0 ? useRemote() : useLocal()
     }
 }
 
