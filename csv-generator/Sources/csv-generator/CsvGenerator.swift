@@ -66,10 +66,12 @@ public final class CsvGenerator {
     /// For the sake of clean code, the CSV line generation is moved to a separate method
     private func createCSVLine(fromDate date: Date) -> String {
         let futureDayString = self.dateFormatter.string(from: date)
-        // Get a random 0-20 deg. Celsius temperature and turn it into Kelvin (sort of, I omitted the decimal part)
-        let randomTempInKelvin = arc4random_uniform(20) + 273
+        // Get a random Celsius temperature
+        let randomDecimal = Double(arc4random_uniform(10)) / 10
+        let random0to10 = Double(arc4random_uniform(10)) + randomDecimal
+        let randomTemp = random0to10 + 16.0
         
         // Now assemble the values into one CSV line
-        return "\(futureDayString),\(randomTempInKelvin)"
+        return "\(futureDayString),\(randomTemp)"
     }
 }

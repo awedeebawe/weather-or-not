@@ -24,16 +24,27 @@ struct Forecast: Codable {
     }
     
     struct Weather: Codable {
-        var main: String
         var icon: String
     }
     
-    static func buildFromLocalWithDate(_ date: String, andTemp temperature: Double) -> Forecast {
+    static func buildFromLocalSourceWithDate(_ date: String, andTemp temperature: Double) -> Forecast {
         return Forecast(dateTime: date, info: MainInfo(temp: temperature), weather: nil)
     }
     
     func getDateWithoutTime() -> String {
         return dateTime.components(separatedBy: " ").first ?? ""
+    }
+    
+    func getTimeWithoutDate() -> String {
+        return dateTime.components(separatedBy: " ").last ?? ""
+    }
+    
+    func getTemperature() -> Double {
+        return info.temp
+    }
+    
+    func getWeatherIcon() -> String {
+        return weather?.first?.icon ?? "unknown"
     }
 }
 

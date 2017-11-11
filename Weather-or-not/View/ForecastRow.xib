@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="forecastRow" rowHeight="150" id="WP5-kM-qEP" customClass="ForecastRow" customModule="Weather_or_not" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WP5-kM-qEP" id="tvo-FT-6ki">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="149.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="qBb-2D-LZH">
+                        <rect key="frame" x="0.0" y="29.5" width="375" height="120"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="120" id="L85-Qe-cqU"/>
+                        </constraints>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0Ao-Uj-2g2">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                    </collectionView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FKT-L0-VWg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="29.5"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="20"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="FKT-L0-VWg" secondAttribute="trailing" id="1Nt-Pz-z4x"/>
+                    <constraint firstItem="FKT-L0-VWg" firstAttribute="top" secondItem="tvo-FT-6ki" secondAttribute="top" id="AuA-GS-RCJ"/>
+                    <constraint firstAttribute="trailing" secondItem="qBb-2D-LZH" secondAttribute="trailing" id="azh-WI-7nq"/>
+                    <constraint firstItem="qBb-2D-LZH" firstAttribute="leading" secondItem="tvo-FT-6ki" secondAttribute="leading" id="eb9-Nd-DRr"/>
+                    <constraint firstItem="FKT-L0-VWg" firstAttribute="leading" secondItem="tvo-FT-6ki" secondAttribute="leading" id="i2n-hD-Nj0"/>
+                    <constraint firstAttribute="bottom" secondItem="qBb-2D-LZH" secondAttribute="bottom" id="y4U-Tr-OX7"/>
+                    <constraint firstItem="qBb-2D-LZH" firstAttribute="top" secondItem="FKT-L0-VWg" secondAttribute="bottom" id="zty-cy-1ii"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="collectionView" destination="qBb-2D-LZH" id="RNt-Cs-L0t"/>
+                <outlet property="dayLabel" destination="FKT-L0-VWg" id="Cfc-im-nyD"/>
+            </connections>
+            <point key="canvasLocation" x="142.5" y="86"/>
+        </tableViewCell>
+    </objects>
+</document>

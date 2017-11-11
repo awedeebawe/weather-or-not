@@ -43,6 +43,6 @@ class LocalClient {
         let csvData = csvLine.components(separatedBy: ",")
         let date = csvData[0]
         let temperature = Double(csvData[1]) ?? 0.0
-        return Forecast.buildFromLocalWithDate(date, andTemp: temperature)
+        return Forecast.buildFromLocalSourceWithDate(date, andTemp: temperature)
     }
 }

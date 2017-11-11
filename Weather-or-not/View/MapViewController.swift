@@ -31,6 +31,12 @@ class MapViewController: UIViewController {
         
         mapView.delegate = self
         mapView.centerCoordinate = viewModel.currentLocation
+        
+        // Prevent the drastic zoom change that occurs if the orientation is landscape
+        if [.landscapeLeft, .landscapeRight].contains(UIDevice.current.orientation) {
+            let viewRegion = MKCoordinateRegionMakeWithDistance(viewModel.currentLocation, 125000, 75000)
+            mapView.setRegion(viewRegion, animated: false)
+        }
     }
 
     // MARK: IBActions
@@ -42,6 +48,9 @@ class MapViewController: UIViewController {
 
 extension MapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        print(mapView.centerCoordinate)
+        guard let viewModel = viewModel else {
+            return
+        }
+        viewModel.currentLocation = mapView.centerCoordinate
     }
 }

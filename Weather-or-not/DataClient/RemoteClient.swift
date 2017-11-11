@@ -35,7 +35,7 @@ class RemoteClient {
     }
     
     fileprivate func generateUrl(withLat lat: Double, andLon lon: Double) -> URL? {
-        let urlString = "https://api.openweathermap.org/data/2.5/forecast?lat=\(lat)&lon=\(lon)&appid=ab53baebef7edee85bd164c7982488d6"
+        let urlString = "https://api.openweathermap.org/data/2.5/forecast?lat=\(lat)&lon=\(lon)&units=metric&appid=ab53baebef7edee85bd164c7982488d6"
         
         return URL(string: urlString)
     }

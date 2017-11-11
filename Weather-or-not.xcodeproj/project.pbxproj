@@ -13,6 +13,12 @@
 		C51A69AE1FB3B77D00375F99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C51A69AD1FB3B77D00375F99 /* Assets.xcassets */; };
 		C51A69B11FB3B77D00375F99 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C51A69AF1FB3B77D00375F99 /* LaunchScreen.storyboard */; };
 		C51A69B91FB3B85700375F99 /* demo.csv in Resources */ = {isa = PBXBuildFile; fileRef = C51A69B81FB3B85700375F99 /* demo.csv */; };
+		C51A69BC1FB7238900375F99 /* ViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51A69BB1FB7238900375F99 /* ViewController+CollectionView.swift */; };
+		C51A69BE1FB729D500375F99 /* ForecastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51A69BD1FB729D500375F99 /* ForecastCell.swift */; };
+		C51A69C01FB729E700375F99 /* ForecastCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C51A69BF1FB729E700375F99 /* ForecastCell.xib */; };
+		C5B337EC1FB73F0A00E4B110 /* ForecastRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B337EB1FB73F0A00E4B110 /* ForecastRow.swift */; };
+		C5B337EE1FB73F3000E4B110 /* ForecastRow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5B337ED1FB73F3000E4B110 /* ForecastRow.xib */; };
+		C5B337F01FB7428000E4B110 /* ViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B337EF1FB7428000E4B110 /* ViewController+TableView.swift */; };
 		C70B19221FB5A7AF001FDA8C /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70B19211FB5A7AF001FDA8C /* Forecast.swift */; };
 		C70B19241FB5AA91001FDA8C /* ForecastData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70B19231FB5AA91001FDA8C /* ForecastData.swift */; };
 		C70B19261FB5AACC001FDA8C /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70B19251FB5AACC001FDA8C /* City.swift */; };
@@ -31,6 +37,12 @@
 		C51A69B01FB3B77D00375F99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C51A69B21FB3B77D00375F99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C51A69B81FB3B85700375F99 /* demo.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = demo.csv; sourceTree = "<group>"; };
+		C51A69BB1FB7238900375F99 /* ViewController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+CollectionView.swift"; sourceTree = "<group>"; };
+		C51A69BD1FB729D500375F99 /* ForecastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastCell.swift; sourceTree = "<group>"; };
+		C51A69BF1FB729E700375F99 /* ForecastCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForecastCell.xib; sourceTree = "<group>"; };
+		C5B337EB1FB73F0A00E4B110 /* ForecastRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastRow.swift; sourceTree = "<group>"; };
+		C5B337ED1FB73F3000E4B110 /* ForecastRow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForecastRow.xib; sourceTree = "<group>"; };
+		C5B337EF1FB7428000E4B110 /* ViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+TableView.swift"; sourceTree = "<group>"; };
 		C70B19211FB5A7AF001FDA8C /* Forecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forecast.swift; sourceTree = "<group>"; };
 		C70B19231FB5AA91001FDA8C /* ForecastData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastData.swift; sourceTree = "<group>"; };
 		C70B19251FB5AACC001FDA8C /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
@@ -104,8 +116,14 @@
 			isa = PBXGroup;
 			children = (
 				C51A69A81FB3B77D00375F99 /* ViewController.swift */,
+				C51A69BB1FB7238900375F99 /* ViewController+CollectionView.swift */,
+				C5B337EF1FB7428000E4B110 /* ViewController+TableView.swift */,
 				C51A69AA1FB3B77D00375F99 /* Main.storyboard */,
 				C793212E1FB6FC9D0081CCA1 /* MapViewController.swift */,
+				C51A69BD1FB729D500375F99 /* ForecastCell.swift */,
+				C51A69BF1FB729E700375F99 /* ForecastCell.xib */,
+				C5B337EB1FB73F0A00E4B110 /* ForecastRow.swift */,
+				C5B337ED1FB73F3000E4B110 /* ForecastRow.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -181,7 +199,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C51A69B11FB3B77D00375F99 /* LaunchScreen.storyboard in Resources */,
+				C5B337EE1FB73F3000E4B110 /* ForecastRow.xib in Resources */,
 				C51A69AE1FB3B77D00375F99 /* Assets.xcassets in Resources */,
+				C51A69C01FB729E700375F99 /* ForecastCell.xib in Resources */,
 				C51A69AC1FB3B77D00375F99 /* Main.storyboard in Resources */,
 				C51A69B91FB3B85700375F99 /* demo.csv in Resources */,
 			);
@@ -212,13 +232,17 @@
 			files = (
 				C70B192A1FB5AC0E001FDA8C /* ViewModel.swift in Sources */,
 				C51A69A91FB3B77D00375F99 /* ViewController.swift in Sources */,
+				C51A69BE1FB729D500375F99 /* ForecastCell.swift in Sources */,
 				C70B19261FB5AACC001FDA8C /* City.swift in Sources */,
 				C70B19221FB5A7AF001FDA8C /* Forecast.swift in Sources */,
 				C793212F1FB6FC9D0081CCA1 /* MapViewController.swift in Sources */,
 				C70B19241FB5AA91001FDA8C /* ForecastData.swift in Sources */,
 				C51A69A71FB3B77D00375F99 /* AppDelegate.swift in Sources */,
 				C793212D1FB5BCD60081CCA1 /* LocalClient.swift in Sources */,
+				C5B337F01FB7428000E4B110 /* ViewController+TableView.swift in Sources */,
 				C70B192E1FB5AD47001FDA8C /* RemoteClient.swift in Sources */,
+				C51A69BC1FB7238900375F99 /* ViewController+CollectionView.swift in Sources */,
+				C5B337EC1FB73F0A00E4B110 /* ForecastRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,7 +381,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MQ567TFJJQ;
+				DEVELOPMENT_TEAM = 92B49Q6AZ2;
 				INFOPLIST_FILE = "Weather-or-not/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -375,7 +399,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MQ567TFJJQ;
+				DEVELOPMENT_TEAM = 92B49Q6AZ2;
 				INFOPLIST_FILE = "Weather-or-not/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

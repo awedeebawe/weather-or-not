@@ -6,34 +6,40 @@
 //  Copyright © 2017 Lyubomir Marinov. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import CoreLocation
 
 class ViewModel {
     
-    public var currentLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 53.241924, longitude: -1.117965)
+    // Initial location: London, of course :)
+    public var currentLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 51.509865, longitude: -0.118092)
     
-    public var forecastData: ForecastData?
+    private var forecastValues: [String: [Forecast]] = [:]
+    private var selectedCity: City?
     
-    var updateStarted: (() -> ())? = nil
-    var updateEnded: (() -> ())? = nil
-    var updateFailed: (() -> ())? = nil
+    public var updateStarted: (() -> ())? = nil
+    public var updateEnded: (() -> ())? = nil
+    public var updateFailed: (() -> ())? = nil
     
     fileprivate let remoteClient = RemoteClient()
     fileprivate let localClient = LocalClient()
     
+    // It's a consuming process to generate formatter, so let's store one up here
+    fileprivate let formatter = DateFormatter()
+    
+    // MARK: Data fetching
     func updateRemote() {
         updateStarted?()
         
         remoteClient.fetchForecast(forLat: currentLocation.latitude, andLon: currentLocation.longitude) { data in
             guard let forecastData = data else {
-                print("Failed to fetch")
                 self.updateFailed?()
                 return
             }
             
-            self.forecastData = forecastData
-            
+            self.extractValuesFromResponseObject(forecastData)
+            self.selectedCity = forecastData.city
+
             self.updateEnded?()
         }
     }
@@ -48,45 +54,85 @@ class ViewModel {
                 return
             }
             
-            self.forecastData = forecastData
+            self.extractValuesFromResponseObject(forecastData)
+            self.selectedCity = forecastData.city
             
             self.updateEnded?()
         }
     }
     
+    // MARK: UITableView cell information setup
+    func updateRow(_ row: ForecastRow, atIndexPath indexPath: IndexPath) {
+        let dayString = getDate(forRow: indexPath.section)
+        row.dayLabel.text = formatDay(fromString: dayString)
+    }
+    
+    // MARK: UICollectionView cell information setup
+    func updateCell(_ cell: ForecastCell, atIndexPath indexPath: IndexPath) {
+        guard let forecastObject = getForecastObject(atIndexPath: indexPath) else {
+            return
+        }
+        cell.timeLabel.text = forecastObject.getTimeWithoutDate()
+        cell.tempLabel.text = "\(forecastObject.getTemperature())°"
+        cell.iconImage.image = UIImage(named: forecastObject.getWeatherIcon()) ?? UIImage()
+    }
+
+    fileprivate func getDate(forRow row: Int) -> String {
+        return forecastValues.keys.sorted { $0 < $1 }[row]
+    }
+    
+    fileprivate func formatDay(fromString dateString: String) -> String {
+        formatter.dateFormat = "yyyy-MM-dd"
+        guard let date = formatter.date(from: dateString) else {
+            // Not the original format
+            return dateString
+        }
+        
+        formatter.dateFormat = "dd.MM.yyyy"
+        return formatter.string(from: date)
+    }
+    
+    /// Get the selected city name (if present)
     func getCurrentCityName() -> String {
-        return forecastData?.city.name ?? "Unknown"
+        return selectedCity?.name ?? "Unknown"
     }
     
-    func getForecastForUniqueDays() -> [Forecast] {
-        guard let data = forecastData else {
-            return []
-        }
+    /// Get all the hour for a specific day
+    func getForecastsForSpecificDay(_ day: String) -> [Forecast] {
+        return forecastValues[day] ?? []
+    }
+    
+    /// Get the specific object depending on the day and hour (table row and collection cell)
+    func getForecastObject(atIndexPath indexPath: IndexPath) -> Forecast? {
+        let dayString = getDate(forRow: indexPath.section)
         
-        var duplicateDays: [Forecast] = []
-        return data.list.flatMap { (forecast) -> Forecast? in
-            if duplicateDays.filter({ $0 =~ forecast }).count == 0 {
-                duplicateDays.append(forecast)
-                return forecast
-            } else {
-                return nil
-            }
-        }
+        return forecastValues[dayString]?[indexPath.item]
     }
     
-    func getForecastForSpecificDay(_ day: String) -> [Forecast] {
-        guard let data = forecastData else {
-            return []
-        }
-        
-        return data.list.filter({ $0.getDateWithoutTime() == day })
-    }
-    
+    /// Get number of the unique fetched days
     func getNumberOfDays() -> Int {
-        return getForecastForUniqueDays().count
+        return forecastValues.keys.count
     }
     
-    func getNumberOfHours(forDay day: String) -> Int {
-        return getForecastForSpecificDay(day).count
+    /// Get the number of the hours per day fetched
+    func getNumberOfHours(atRow row: Int) -> Int {
+        let dayString = getDate(forRow: row)
+        
+        return forecastValues[dayString]?.count ?? 0
+    }
+    
+    // MARK: Private helper methods
+    fileprivate func extractValuesFromResponseObject(_ forecastResponse: ForecastData) {
+        forecastValues.removeAll()
+        forecastResponse.list.forEach { (forecast) in
+            let forecastDate = forecast.getDateWithoutTime()
+            
+            if forecastValues[forecastDate] == nil {
+                forecastValues[forecastDate] = []
+            }
+            
+            forecastValues[forecastDate]?.append(forecast)
+        }
+        
     }
 }
